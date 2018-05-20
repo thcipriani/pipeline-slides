@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="streamlined-service-delivery" class="slide level1">
+<h1>Streamlined Service Delivery</h1>
+<h2 id="wikimedias-continuous-delivery-pipeline">Wikimedia's Continuous Delivery Pipeline</h2>
+<!-- NOTE: Describe the stages, briefly -->
+</section>
+<section id="why-the-pipeline" class="slide level1">
+<h1>Why the pipeline</h1>
+<ul>
+<li>Developer empowerment</li>
+<li>Environment parity</li>
+<li>Feedback cycles</li>
+<li>Reproducibility and deployment confidence</li>
+</ul>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<figure>
+<img src="images/testpyramid.png" alt="Testing Pyramid" /><figcaption>Testing Pyramid</figcaption>
+</figure>
+</section>
+<section id="what-the-pipeline" class="slide level1">
+<h1>What the pipeline</h1>
+<ul>
+<li>Promotion of application images</li>
+<li>Immutable progression</li>
+<li>Testing from the inside out</li>
+</ul>
+</section>
+<section id="deployment-pipeline" class="slide level1">
+<h1><img src="images/continuous-pipeline.png" title="The vision for continuous delivery pipeline" alt="Deployment Pipeline" /></h1>
+</section>
+<section id="section-1" class="slide level1">
+<h1></h1>
+<h2 id="image-building-using-blubber">Image Building using Blubber</h2>
+<ul>
+<li>Docker wrapper</li>
+<li>Efficiency</li>
+<li>Security</li>
+<li>Empowerment</li>
+</ul>
+</section>
+<section id="section-2" class="slide level1">
+<h1></h1>
+<figure>
+<img src="images/pipeline-build.png" alt="Pipeline Build Stage" /><figcaption>Pipeline Build Stage</figcaption>
+</figure>
+</section>
+<section id="blubber-efficiency" class="slide level1">
+<h1>Blubber – Efficiency</h1>
+<ul>
+<li>Dockerfiles are... idiomatic? Blubber uses declarative YAML</li>
+<li>Blubber knows how to write cacheable instructions</li>
+<li>Supports multi-stage builds (smaller resulting images)</li>
+</ul>
+</section>
+<section id="blubber-security" class="slide level1">
+<h1>Blubber – Security</h1>
+<ul>
+<li>Enforces a security model
+<ul>
+<li><code>root</code>: Install system packages, etc.</li>
+<li><code>somebody</code>: Owns app files, installs dependencies (e.g. npm), etc.</li>
+<li><code>runuser</code>: Runs application entry-point</li>
+</ul></li>
+</ul>
+<!-- NOTE: Why does this matter? container exit exploits require root; allowing runtime processes to modify app files is dumb, even in a container. -->
+</section>
+<section id="blubber-empowerment" class="slide level1">
+<h1>Blubber – Empowerment</h1>
+<ul>
+<li><em>Developers</em> specify system dependencies, package managers, entrypoints in their repos</li>
+<li><em>Developers</em> define their tests in their repo</li>
+<li><em>Developers</em> deploy (eventually)</li>
+</ul>
+</section>
+<section id="developers-developers-developers" class="slide level1">
+<h1>Developers, Developers, Developers</h1>
+</section>
+<section id="developers-developers-developers-1" class="slide level1">
+<h1><img src="images/developersdevelopersdevelopers.gif" title="That&#39;s 3 developers!" alt="Developers, Developers, Developers" /></h1>
+</section>
+<section id="section-3" class="slide level1">
+<h1></h1>
+<p><code>blubber.yaml</code></p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml">    <span class="fu">base:</span><span class="at"> docker-registry.wikimedia.org/nodejs-slim</span>
+    <span class="fu">apt:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">packages:</span><span class="at"> </span><span class="kw">[</span>librsvg2-2<span class="kw">]</span><span class="at"> </span><span class="kw">}</span>
+
+    <span class="fu">variants:</span>
+      <span class="fu">build:</span>
+        <span class="fu">base:</span><span class="at"> docker-registry.wikimedia.org/nodejs-devel</span>
+        <span class="fu">apt:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">packages:</span><span class="at"> </span><span class="kw">[</span>librsvg2-dev<span class="kw">,</span> git<span class="kw">,</span> build-essential<span class="kw">]</span><span class="at"> </span><span class="kw">}</span>
+        <span class="fu">node:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">requirements:</span><span class="at"> </span><span class="kw">[</span>package.json<span class="kw">,</span> package-lock.json<span class="kw">]</span><span class="at"> </span><span class="kw">}</span>
+      <span class="fu">test:</span>
+        <span class="fu">includes:</span><span class="at"> </span><span class="kw">[</span>build<span class="kw">]</span>
+        <span class="fu">entrypoint:</span><span class="at"> </span><span class="kw">[</span>npm<span class="kw">,</span> test<span class="kw">]</span>
+      <span class="fu">production:</span>
+        <span class="fu">copies:</span><span class="at"> build</span>
+        <span class="fu">node:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">env:</span><span class="at"> production </span><span class="kw">}</span>
+        <span class="fu">entrypoint:</span><span class="at"> </span><span class="kw">[</span>node<span class="kw">,</span> server.js<span class="kw">]</span></code></pre></div>
+</section>
+<section id="blubber" class="slide level1">
+<h1>Blubber</h1>
+<h2 id="variants-why">Variants – Why?</h2>
+<ul>
+<li>Parity (development -&gt; testing -&gt; production)</li>
+<li>But some things are simply different in dev/testing</li>
+<li>A balance is struck by <em>selectively</em> overriding</li>
+</ul>
+</section>
+<section id="blubber-1" class="slide level1">
+<h1>Blubber</h1>
+<h2 id="variants-how">Variants – How?</h2>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml">    <span class="fu">base:</span><span class="at"> docker-registry.wikimedia.org/nodejs-slim</span>
+    <span class="fu">apt:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">packages:</span><span class="at"> </span><span class="kw">[</span>librsvg2-2<span class="kw">]</span><span class="at"> </span><span class="kw">}</span>
+
+    <span class="fu">variants:</span>
+      <span class="fu">build:</span>
+        <span class="fu">base:</span><span class="at"> docker-registry.wikimedia.org/nodejs-devel</span>
+        <span class="fu">apt:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">packages:</span><span class="at"> </span><span class="kw">[</span>librsvg2-dev<span class="kw">,</span> git<span class="kw">,</span> build-essential<span class="kw">]</span><span class="at"> </span><span class="kw">}</span>
+        <span class="fu">node:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">requirements:</span><span class="at"> </span><span class="kw">[</span>package.json<span class="kw">,</span> package-lock.json<span class="kw">]</span><span class="at"> </span><span class="kw">}</span></code></pre></div>
+<!--
+* Base image and entrypoint
+-->
+</section>
+<section id="blubber-2" class="slide level1">
+<h1>Blubber</h1>
+<h2 id="variants-how-1">Variants – How?</h2>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml">    <span class="fu">variants:</span>
+      <span class="fu">build:</span>
+          <span class="co"># ...</span>
+      <span class="fu">test:</span>
+        <span class="fu">includes:</span><span class="at"> </span><span class="kw">[</span>build<span class="kw">]</span>
+        <span class="fu">entrypoint:</span><span class="at"> </span><span class="kw">[</span>npm<span class="kw">,</span> test<span class="kw">]</span>
+      <span class="fu">prep:</span>
+        <span class="fu">includes:</span><span class="at"> </span><span class="kw">[</span>build<span class="kw">]</span>
+        <span class="fu">node:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">env:</span><span class="at"> production </span><span class="kw">}</span></code></pre></div>
+<!--
+* Can inherit from other variants
+-->
+</section>
+<section id="blubber-3" class="slide level1">
+<h1>Blubber</h1>
+<h2 id="variants-how-2">Variants – How?</h2>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml">    <span class="fu">variants:</span>
+      <span class="co"># ...</span>
+      <span class="fu">prep:</span>
+        <span class="fu">includes:</span><span class="at"> </span><span class="kw">[</span>build<span class="kw">]</span>
+        <span class="fu">node:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">env:</span><span class="at"> production </span><span class="kw">}</span>
+      <span class="fu">production:</span>
+        <span class="fu">copies:</span><span class="at"> prep</span>
+        <span class="fu">node:</span><span class="at"> </span><span class="kw">{</span> <span class="fu">env:</span><span class="at"> production </span><span class="kw">}</span>
+        <span class="fu">entrypoint:</span><span class="at"> </span><span class="kw">[</span>node<span class="kw">,</span> server.js<span class="kw">]</span></code></pre></div>
+<!--
+* Copies `copies` in compiled packages from other images
+-->
+</section>
+<section id="image-built" class="slide level1">
+<h1>Image Built</h1>
+<h2 id="now-what">Now what?</h2>
+</section>
+<section id="jenkins-pipeline" class="slide level1">
+<h1>Jenkins Pipeline</h1>
+<figure>
+<img src="images/jenkinsbuildpipeline.png" alt="Jenkins Pipeline" /><figcaption>Jenkins Pipeline</figcaption>
+</figure>
+</section>
+<section id="section-4" class="slide level1">
+<h1></h1>
+<h2 id="jenkins-pipeline-steps">Jenkins Pipeline Steps</h2>
+<ol type="1">
+<li>Checkout patch from zuul and build test variant</li>
+<li>Run test variant</li>
+<li>Build production variant</li>
+<li>Deploy production variant to minikube in CI</li>
+<li>Helm test
+<ul>
+<li>service-checker-swagger in a separate pod</li>
+<li>verifies endpoints in deployed application pod</li>
+</ul></li>
+<li>Push production image to the registry</li>
+</ol>
+</section>
+<section id="section-5" class="slide level1">
+<h1></h1>
+<h2 id="jenkins-pipeline-steps-1">Jenkins Pipeline Steps</h2>
+<ol type="1">
+<li>Checkout patch from zuul and build test variant</li>
+<li>Build test variant and run entry point</li>
+<li>Build production variant</li>
+<li><strong>Deploy production variant to minikube in CI</strong></li>
+<li><strong>Helm test</strong>
+<ul>
+<li><strong>service-checker-swagger in a separate pod</strong></li>
+<li><strong>verifies endpoints in deployed application pod</strong></li>
+</ul></li>
+<li>Push production image to the registry</li>
+</ol>
+</section>
+<section id="section-6" class="slide level1">
+<h1></h1>
+<figure>
+<img src="images/pipeline-verify.png" alt="Pipeline Verify Stage" /><figcaption>Pipeline Verify Stage</figcaption>
+</figure>
+</section>
+<section id="section-7" class="slide level1">
+<h1></h1>
+<h2 id="docker-production-registry">Docker Production Registry</h2>
+<ul>
+<li><a href="https://docker-registry.wikimedia.org/v2/_catalog">docker-registry.wikimedia.org</a></li>
+<li>Mathoid image currently running in production:</li>
+</ul>
+<pre><code>docker-registry.wikimedia.org/
+wikimedia/mediawiki-services-mathoid:build-44</code></pre>
+</section>
+<section id="section-8" class="slide level1">
+<h1></h1>
+<h2 id="helm">Helm</h2>
+<ul>
+<li>Glues together configuration and containers</li>
+<li>Manages deployments as a unit</li>
+<li>Chart repo: <a href="https://releases.wikimedia.org/charts/">releases.wikimedia.org/charts/</a></li>
+</ul>
+</section>
+<section id="deployment-to-production" class="slide level1">
+<h1>Deployment to production</h1>
+<p><code>helm upgrade</code></p>
+</section>
+<section id="section-9" class="slide level1">
+<h1></h1>
+<h3 id="slides-available-at">Slides available at</h3>
+<pre><code>people.wikimedia.org/~thcipriani/pipeline</code></pre>
+<h3 id="blubber-available-at">Blubber available at</h3>
+<pre><code>people.wikimedia.org/~thcipriani/blubber</code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
